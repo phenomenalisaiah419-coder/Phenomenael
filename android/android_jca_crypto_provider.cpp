@@ -20,7 +20,7 @@ AndroidJcaCryptoProvider::~AndroidJcaCryptoProvider() {
     bool attached = false;
     JNIEnv* env = nullptr;
     if (vm_->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) == JNI_EDETACHED) {
-        if (vm_->AttachCurrentThread(reinterpret_cast<void**>(&env), nullptr) != JNI_OK) return;
+        if (vm_->AttachCurrentThread(&env, nullptr) != JNI_OK) return;
         attached = true;
     }
     if (env != nullptr) {
@@ -80,7 +80,7 @@ JNIEnv* AndroidJcaCryptoProvider::env_for_call(bool& attached, std::string* erro
     JNIEnv* env = nullptr;
     const jint rc = vm_->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6);
     if (rc == JNI_OK) return env;
-    if (rc != JNI_EDETACHED || vm_->AttachCurrentThread(reinterpret_cast<void**>(&env), nullptr) != JNI_OK) {
+    if (rc != JNI_EDETACHED || vm_->AttachCurrentThread(&env, nullptr) != JNI_OK) {
         set_error(error, "unable to attach current thread to Android VM");
         return nullptr;
     }
