@@ -11,11 +11,11 @@ This is a separate Android companion application for the existing Bedrock AI Con
 - Editable control coordinates expressed as percentages of the display.
 - JNI safety self-check into the v0.35 C++ `ControlHub`; unknown server classification must remain observe-only, and Stage 1 does not pass unverified screen data into the hub or dispatch AI decisions to Minecraft.
 - No screen observations are sent to the native hub in Stage 1. The self-check uses an unknown server classification, which must resolve to `observe_only`.
-- A GitHub Actions workflow can build a debug APK using Android SDK 37, NDK 30.0.16248370, CMake 3.31.6 and Gradle 9.6.0.
+- A GitHub Actions workflow can build a debug APK using Android SDK 36, NDK 30.0.16248370, CMake 3.31.6 and Gradle 9.6.0.
 
 ## Build
 
-The Android project is in this directory. Use JDK 17, Android SDK platform 37, CMake 3.31.6 and NDK 30.0.16248370.
+The Android project is in this directory. Use JDK 17, Android SDK platform 36, CMake 3.31.6 and NDK 30.0.16248370.
 
 ```bash
 gradle --no-daemon :app:assembleDebug

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.bedrockai.companion"
-    compileSdk = 37
+    compileSdk = 36
     ndkVersion = "30.0.16248370"
 
     defaultConfig {
