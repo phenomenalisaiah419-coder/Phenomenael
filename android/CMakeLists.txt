@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(bedrock_ai_android_jni LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(BEDROCKAI_BUILD_ANDROID_JNI ON CACHE BOOL "Build Android JNI bridge" FORCE)
+add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror)
+add_subdirectory(.. ${CMAKE_BINARY_DIR}/bedrockai-core)

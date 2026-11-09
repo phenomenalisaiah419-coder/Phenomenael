@@ -1,0 +1,38 @@
+# Bedrock AI Controller — 1.26.50 / protocol 2193 ARM64 hook profile
+#
+# IMPORTANT: values below are placeholders only. Do not invent production offsets.
+# Populate them from the exact authorized libminecraftpe.so after collecting its
+# runtime GNU build ID and verifying the executable bytes.
+#
+# required_build_id_hex=<exact GNU build ID reported by the device probe>
+#
+# client_tick.signature=<unique byte pattern, 4-byte aligned, first instruction>
+# client_tick.expected=<exact original first instruction bytes, 4 bytes>
+#
+# Safe live Tick installation requires:
+# - kind=Tick
+# - patch_offset=0
+# - patch_size=4
+# - expected = exactly one AArch64 instruction
+# - the first instruction must not be an indirect branch/return or PC-relative instruction
+# - the executable target must match the exact loaded build ID
+#
+# The runtime changes only one 32-bit instruction at the target to a B veneer.
+# The veneer loads the per-hook context and enters the universal register-preserving
+# Tick stub. The trampoline executes the original instruction and resumes at +4.
+#
+# The installer refuses the plan on an unsupported architecture, unknown build,
+# non-unique signature, expected-byte mismatch, unsafe relocation, out-of-range
+# branch, or failed executable-page permission change.
+
+
+# v0.20 complete hook plan (all five exact sites are required):
+# Tick|client_tick|<build>|<unique signature>|<exact expected>|0|4
+# ReadState|client_state|<build>|<unique signature>|<expected bytes>|<offset>|<size>
+# ReadInventory|client_inventory|<build>|<unique signature>|<expected bytes>|<offset>|<size>
+# ReadTouch|client_touch|<build>|<unique signature>|<expected bytes>|<offset>|<size>
+# SubmitActions|client_submit_actions|<build>|<unique signature>|<expected bytes>|<offset>|<size>
+#
+# The core resolves all five before calling the modified-client install_client_hooks
+# callback. The callback is responsible for the exact native ABI of each target and
+# must install the five bindings as one transaction or roll back on failure.

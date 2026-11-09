@@ -1,0 +1,11 @@
+# Android/Gradle outputs
+**/.gradle/
+**/build/
+companion/local.properties
+local.properties
+*.iml
+.idea/
+
+# Local build and inspection artifacts
+/build_make/
+/stage2_inspection/

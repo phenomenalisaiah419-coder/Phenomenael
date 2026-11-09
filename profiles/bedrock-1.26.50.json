@@ -1,0 +1,34 @@
+{
+  "game_version": "1.26.50",
+  "protocol": 2193,
+  "status": "target_locked_bootstrap_ready_for_live_transport",
+  "packet_ids": {
+    "login": 1,
+    "play_status": 2,
+    "server_to_client_handshake": 3,
+    "client_to_server_handshake": 4,
+    "disconnect": 5,
+    "start_game": 11,
+    "move_player": 19,
+    "inventory_transaction": 30,
+    "level_chunk": 58,
+    "network_settings": 143,
+    "player_auth_input": 144,
+    "request_network_settings": 193,
+    "voxel_shapes": 337
+  },
+  "human_gated_actions": ["attack", "place_block"],
+  "ai_forbidden_actions": ["break_bed"],
+  "survival_exceptions": ["emergency_place", "emergency_utility", "emergency_move", "emergency_look", "emergency_switch_item"],
+  "measured_mechanics": {
+    "attack_distance": null,
+    "attack_cadence": null,
+    "placement_reach": null,
+    "knockback": null,
+    "pearl": null,
+    "wind_charge": null,
+    "fireball": null,
+    "bridge": null,
+    "edge_recovery": null
+  }
+}

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bedrock Companion</string>
+    <string name="accessibility_service_description">Sends only the Minecraft test gestures explicitly requested by the user. It does not read screen contents through Accessibility.</string>
+</resources>
